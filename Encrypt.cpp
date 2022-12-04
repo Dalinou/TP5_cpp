@@ -17,7 +17,7 @@ void Encrypt::read(std::string filename, char plain_or_cipher)
 	destination = "";
 	while (std::getline(file, line))
 	{
-		destination += line;
+		destination += line + "\n";
 	}
 	file.close();
 }
