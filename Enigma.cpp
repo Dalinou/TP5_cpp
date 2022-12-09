@@ -9,11 +9,6 @@ Enigma::Enigma(std::string key, int offset) :
 		for (char c = 'a'; c <= 'z'; ++c) {
 			_reverse_key += (char)('a' + _key.find(c));
 		}
-		std::cout << "Key:\t\t" << _key << std::endl;
-		std::cout << "Reverse key:\t" << _reverse_key << std::endl;
-		for (int i = 0; i < 26; ++i) {
-			std::cout << (char)('a' + i) << " -> " << _key[i] << " -> " << _reverse_key[_key[i]-'a'] << std::endl;
-		}
 	}
 	else
 		throw std::string("Key must be a mix of the alphabet");

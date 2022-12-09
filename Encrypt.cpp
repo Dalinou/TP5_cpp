@@ -13,11 +13,10 @@ void Encrypt::read(std::string filename, char plain_or_cipher)
 {
 	std::string& destination = (plain_or_cipher == 'p') ? _plain : _cipher;
 	std::ifstream file(filename);
-	std::string line;
+	char c;
 	destination = "";
-	while (std::getline(file, line))
-	{
-		destination += line + "\n";
+	while (file.get(c)) {
+		destination += c;
 	}
 	file.close();
 }
