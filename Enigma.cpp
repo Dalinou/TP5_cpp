@@ -49,7 +49,7 @@ int Enigma::getOffset() {
 
 bool Enigma::isMixAlphabet(std::string str) {
 	uint32_t check = 0x003fffff;
-	if (str.length() > 26) {
+	if (str.length() != 26) {
 		return false;
 	}
 	for (char c : str) {
