@@ -1,6 +1,5 @@
 #include "Enigma.h"
 #include "EncryptHelper.h"
-#include <iostream>
 
 Enigma::Enigma(std::string key, int offset) :
 	_offset(offset%26) {
@@ -18,11 +17,11 @@ void Enigma::encode() {
 	_cipher = _plain;
 	for (char& c : _cipher) {
 		if (c >= 'a' && c <= 'z') {
-			c = _key[(c - 'a' + _offset) % 26];
+			c = _key.at((c - 'a' + _offset) % 26);
 			++_offset %= 26;
 		}
 		else if (c >= 'A' && c <= 'Z') {
-			c = _key[(c - 'A' + _offset) % 26] - 'a' + 'A';
+			c = _key.at((c - 'A' + _offset) % 26) - 'a' + 'A';
 			++_offset %= 26;
 		}
 	}
@@ -31,11 +30,11 @@ void Enigma::decode() {
 	_plain = _cipher;
 	for (char& c : _plain) {
 		if (c >= 'a' && c <= 'z') {
-			c = ((_reverse_key[c - 'a'] - _offset - 'z') % 26) + 'z';
+			c = ((_reverse_key.at(c - 'a') - _offset - 'z') % 26) + 'z';
 			++_offset %= 26;
 		}
 		else if (c >= 'A' && c <= 'Z') {
-			c = ((_reverse_key[c - 'A'] - _offset - 'z') % 26) + 'Z';
+			c = ((_reverse_key.at(c - 'A') - _offset - 'z') % 26) + 'Z';
 			++_offset %= 26;
 		}
 	}
