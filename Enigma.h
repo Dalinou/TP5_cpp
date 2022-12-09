@@ -13,7 +13,6 @@ private:
 	std::string _key;
 	std::string _reverse_key;
 	int _offset;
-	bool isMixAlphabet(std::string str);
 	
 };
 

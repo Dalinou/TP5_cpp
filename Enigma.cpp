@@ -1,4 +1,5 @@
 #include "Enigma.h"
+#include "EncryptHelper.h"
 #include <iostream>
 
 Enigma::Enigma(std::string key, int offset) :
@@ -45,18 +46,4 @@ void Enigma::setOffset(int offset) {
 }
 int Enigma::getOffset() {
 	return _offset;
-}
-
-bool Enigma::isMixAlphabet(std::string str) {
-	uint32_t check = 0x03ffffff;
-	if (str.length() != 26) return false;
-	for (char c : str) {
-		if (c < 'a' || c > 'z') {
-			return false;
-		}
-		else {
-			check &= ~(1 << (c - 'a'));
-		}
-	}
-	return check == 0;
 }
