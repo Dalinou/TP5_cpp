@@ -6,6 +6,7 @@ template<int _pair_number> // -1 for reflector, 10 for plugboard
 class PairSwitch
 {
 public:
+	PairSwitch();
 	PairSwitch(std::string key);
 	PairSwitch(std::vector<std::string> pair_list);
 	void pass_through(char& c) const;

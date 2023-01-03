@@ -1,5 +1,9 @@
 #include "Rotor.h"
 #include "EncryptHelper.h"
+
+Rotor::Rotor() :
+	_key("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _reverse_key("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _offset(0), _notches({ 0 }){
+}
 Rotor::Rotor(std::string key, uint offset, std::vector<uint> notches) :
 	_offset(offset % 26) {
 	if (isMixAlphabet(key)) {

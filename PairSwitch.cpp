@@ -1,5 +1,12 @@
 #include "PairSwitch.h"
 #include "EncryptHelper.h"
+
+template<int _pair_number>
+PairSwitch<_pair_number>::PairSwitch() :
+	_key("ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+	_check_pair_number();
+}
+
 template<int _pair_number>
 PairSwitch<_pair_number>::PairSwitch(std::string key) :
 	_key(key) {
