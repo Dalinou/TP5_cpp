@@ -4,8 +4,8 @@
 
 int main() {
 
-	std::string default_key = "abcdefghijklmnopqrstuvwxyz";
-	std::string key = "aqwzsxedcrfvtgbyhnpmolikuj";
+	std::string default_key = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	std::string key = "AQWXSZEDCVFRTGBNHYUJKIOLMP";
 	Enigma clear(default_key);
 	Enigma cipher(key);
 	Enigma2 enigma2({ default_key, key });
