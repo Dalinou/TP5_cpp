@@ -22,7 +22,7 @@ int main() {
 	clear.write("plain_default.txt", 'p');
 	std::cout << clear.plain() << std::endl << "-----" << std::endl << clear.cipher() << std::endl;
 	std::cout << "----------" << std::endl;
-
+	
 	std::cout << "cipher : " << std::endl;
 	cipher.read("plain.txt", 'p');
 	cipher.encode();
@@ -47,6 +47,6 @@ int main() {
 	enigma2.decode();
 	enigma2.write("plain_enigma2.txt", 'p');
 	std::cout << enigma2.plain() << std::endl << "-----" << std::endl << enigma2.cipher() << std::endl;
-
+	
 	return 0;
 }
