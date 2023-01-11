@@ -19,8 +19,8 @@ bool isMixAlphabet(std::string str) {
 	}
 }
 
-template<int _pair_number>
-bool isPairSwitch(std::string str) {
+
+bool isPairSwitch(int pair_number, std::string str) {
 	if (str.length() != 26) return false;
 	if (isMajuscule(str.at(0))) {
 		int pair_number = 0;
@@ -34,7 +34,7 @@ bool isPairSwitch(std::string str) {
 				else if (str.at(str.at(c - 'A') - 'A') != c) return false;
 			}
 		}
-		if (pair_number == _pair_number || _pair_number == -1) return true;
+		if (pair_number == pair_number ||pair_number == -1) return true;
 		else return false;
 	}
 	else {

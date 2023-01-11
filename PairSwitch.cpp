@@ -1,25 +1,27 @@
 #include "PairSwitch.h"
 #include "EncryptHelper.h"
 
-template<int _pair_number>
-PairSwitch<_pair_number>::PairSwitch() :
+
+PairSwitch::PairSwitch(int pair_number) : 
+	_pair_number(_pair_number),
 	_key("ABCDEFGHIJKLMNOPQRSTUVWXYZ") {
 	_check_pair_number();
 }
 
-template<int _pair_number>
-PairSwitch<_pair_number>::PairSwitch(std::string key) :
-	_key(key) {
+
+PairSwitch::PairSwitch(int pair_number, std::string key) :
+	_pair_number(pair_number), _key(key) {
 	_check_pair_number();
 	if (isMixAlphabet(_key))
-		if (isPairSwitch<_pair_number>(_key))
+		if (isPairSwitch(pair_number, _key))
 			return;
 		else
 			throw std::string("Key must be an switch of pair");
 	throw std::string("Key must be a mix of the alphabet");
 }
-template<int _pair_number>
-PairSwitch<_pair_number>::PairSwitch(std::vector<std::string> pair_list) {
+
+PairSwitch::PairSwitch(int pair_number, std::vector<std::string> pair_list) :
+	_pair_number(pair_number) {
 	_check_pair_number();
 	if (_pair_number == -1)
 		throw std::string("Constructor not available with no pair number set");
@@ -38,8 +40,8 @@ PairSwitch<_pair_number>::PairSwitch(std::vector<std::string> pair_list) {
 	}
 }
 
-template<int _pair_number>
-void PairSwitch<_pair_number>::pass_through(char& c) const{
+
+void PairSwitch::pass_through(char& c) const{
 	if (isMinuscule(c))
 		c = _key.at(c - 'a') - 'A' + 'a';
 	else if (isMajuscule(c))
@@ -47,8 +49,11 @@ void PairSwitch<_pair_number>::pass_through(char& c) const{
 		
 }
 
-template<int _pair_number>
-void PairSwitch<_pair_number>::_check_pair_number() {
+bool PairSwitch::operator=(const PairSwitch& other) {
+	return _key == other._key && _pair_number == other._pair_number;
+}
+
+void PairSwitch::_check_pair_number() {
 	if (_pair_number < -1 || _pair_number > 13)
 		throw std::string("Invalide pair number");
 }
